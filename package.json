@@ -1,0 +1,28 @@
+{
+  "name": "meal-bytes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfocha/meal-bytes.git"
+  },
+  "author": "Shahab Geravesh, Jiajie \"Jay\" Chen, Rayell Mcmahan, Joseph Focha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jfocha/meal-bytes/issues"
+  },
+  "homepage": "https://github.com/jfocha/meal-bytes#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.7",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  }
+}
