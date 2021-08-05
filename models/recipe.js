@@ -1,7 +1,7 @@
 //Should create tables of the database in the workbench
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-class recepies extends Model{}
+class recipe extends Model{}
 recipe.init(
     {
         name:{
