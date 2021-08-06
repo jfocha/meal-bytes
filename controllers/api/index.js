@@ -1,12 +1,7 @@
-require('dotenv').config()
-// be sure to add "API_KEY = 5ba6255aa5cc37d9defcd3858ff211fe—" in your .env
+const router = require('express').Router();
 
-router.get('/', async (request, response) => {
-    const api_key = process.env.API_KEY;
-    const recipe_url = `https://api.edamam.com/${api_key}/recipes/v2`;
-    const res = await fetch(recipe_url);
-    const data = await res.json();
+const recipeRoutes = require('./recipes');
 
-    console.log(data.results)
-    // do what you'd like with data.results
-})
+router.use('/recipes', recipeRoutes);
+
+module.exports = router;
