@@ -16,36 +16,13 @@ recipe.init(
         allowNull: false,
 	
     },
-    measurement:{
-       type:DataTypes.STRING,
-       allowNull: false,
-    
-},
+
       ingredients:{
     
           type: DataTypes.STRING,
         },
-        
-        description:{
-    
-         type: DataTypes.TEXT,
-        },
-        
-             
-        image:{
-    
-          type: DataTypes.BLOB("long"),
-        },
       
-        imageURL:{
-    
-          type: DataTypes.STRING,
-        },
-       
-        mealType:{
-         type: DataTypes.STRING,
-
-        },
+        
         instructions:{
     
            type: DataTypes.TEXT,

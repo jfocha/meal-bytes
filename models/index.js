@@ -1,69 +1,10 @@
-// import all models
-const Post = require('./Post');
-const User = require('./User');
-const Vote = require('./Vote');
-const Comment = require('./Comment');
+const recipe = require('./recipe');
+const user=require('./user');
+const favorite=require('./favorite');
 
-// create associations
-User.hasMany(Post, {
-  foreignKey: 'user_id'
-});
+module.exports = recipe;
+module.exports=user;
+module.exports=favorite;
 
-Post.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-User.belongsToMany(Post, {
-  through: Vote,
-  as: 'voted_posts',
-
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Post.belongsToMany(User, {
-  through: Vote,
-  as: 'voted_posts',
-  foreignKey: 'post_id',
-  onDelete: 'SET NULL'
-});
-
-Vote.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Vote.belongsTo(Post, {
-  foreignKey: 'post_id',
-  onDelete: 'SET NULL'
-});
-
-User.hasMany(Vote, {
-  foreignKey: 'user_id'
-});
-
-Post.hasMany(Vote, {
-  foreignKey: 'post_id'
-});
-
-Comment.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Comment.belongsTo(Post, {
-  foreignKey: 'post_id',
-  onDelete: 'SET NULL'
-});
-
-User.hasMany(Comment, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Post.hasMany(Comment, {
-  foreignKey: 'post_id'
-});
-
-module.exports = { User, Post, Vote, Comment };
+//index.js file will export any models found within the models folder so that 
+//they can be referenced from other files by just calling on the models folders
