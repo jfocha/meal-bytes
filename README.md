@@ -1,6 +1,6 @@
 # meal-bytes
 
-Dependencies/n
+Dependencies /n
 
 Mysql
 mysql2
