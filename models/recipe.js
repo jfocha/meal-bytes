@@ -4,7 +4,24 @@ const sequelize = require('../config/connection');
 class recipe extends Model{}
 recipe.init(
     {
-        name:{
+
+      Id:{
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+
+      amount:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+	
+    },
+    measurement:{
+       type:DataTypes.STRING,
+       allowNull: false,
+    
+},
+      ingredients:{
     
           type: DataTypes.STRING,
         },
@@ -14,11 +31,7 @@ recipe.init(
          type: DataTypes.TEXT,
         },
         
-        mealType:{
-    
-          type: DataTypes.STRING,
-        },
-        
+             
         image:{
     
           type: DataTypes.BLOB("long"),
@@ -29,29 +42,9 @@ recipe.init(
           type: DataTypes.STRING,
         },
        
-        gluten_free:{
-    
-          type:  DataTypes.BOOLEAN,
-        },
-        dairy_free:{
-    
-          type:  DataTypes.BOOLEAN,
-        },
-        vegetarian:{
-    
-          type:  DataTypes.BOOLEAN,
-        },
-        vegan:{
-    
-          type:  DataTypes.BOOLEAN,
-        },
-        prep_time:{
-    
-           type: DataTypes.INTEGER,
-        },
-        cook_time:{
-    
-           type: DataTypes.INTEGER,
+        mealType:{
+         type: DataTypes.STRING,
+
         },
         instructions:{
     
