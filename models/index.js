@@ -1,10 +1,10 @@
 const recipe = require('./recipe');
-const user=require('./user');
+const User = require('./User');
 const favorite=require('./favorite');
 
-module.exports = recipe;
-module.exports=user;
-module.exports=favorite;
+//need to create associations and register foreign keys
+
+module.exports = { User, recipe, favorite };
 
 //index.js file will export any models found within the models folder so that 
 //they can be referenced from other files by just calling on the models folders
