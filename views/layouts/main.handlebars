@@ -1,28 +1,53 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meal Bytes</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Bytes</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">Meal Bytes</a>
-      </h1>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
-  </div>
-
-</body>
+  <body>
+    <div class="wrapper">
+{{log loggedIn}}
+      <header>
+        <h1>
+          <a href="/">Meal Bytes</a>
+        </h1>
+              <nav>
+        {{#if loggedIn}}
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <form class="login-form">
+          <div>
+            <label for="email-login">email:</label>
+            <input type="text" id="email-login" />
+          </div>
+          <div>
+            <label for="password-login">password:</label>
+            <input type="password" id="password-login" />
+          </div>
+          <div>
+            <button type="submit">Login!</button>
+          </div>
+          <a class="link" href="/signup">Sign up instead</a>
+        </form>
+        {{/if}}
+      </nav>
+      </header>
+      <main>
+        {{{body}}}
+      </main>
+      <footer>
+        Thanks for visiting!
+      </footer>
+    </div>
+    
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{else}}
+    <script src="/javascript/login.js"></script>
+    {{/if}}
+  </body>
 
 </html>

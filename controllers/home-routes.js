@@ -4,26 +4,41 @@ const { User } = require('../models');
 
 // hard coded test route
 router.get('/', (req, res) => {
-    res.render('homepage', {
-      id: 1,
-      post_url: 'https://handlebarsjs.com/guide/',
-      title: 'Handlebars Docs',
-      created_at: new Date(),
-      vote_count: 10,
-      comments: [{}, {}],
-      user: {
-        username: 'test_user'
-      }
+    console.log(req.session);
+    User.findAll({
+        attributes: ['username'] 
+      })
+        .then(dbPostData => {
+          // serialize the entire array dbPostData
+          const posts = dbPostData.map(post => post.get({ plain: true }));
+          // pass a single post object into the homepage template
+          res.render('homepage', {
+            posts,
+            loggedIn: req.session.loggedIn
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
     });
+  
+  router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
   });
+
+router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
   
-//   router.get('/login', (req, res) => {
-//     if (req.session.loggedIn) {
-//       res.redirect('/');
-//       return;
-//     }
-  
-//     res.render('login');
-//   });
+    res.render('signup');
+  });
 
   module.exports = router;
