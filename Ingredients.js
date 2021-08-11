@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 class Ingredients extends Model { }
 Ingredients.init(
     {
-        id: {
+        ingredients_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
