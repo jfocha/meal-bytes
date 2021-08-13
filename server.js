@@ -41,7 +41,7 @@ app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
 });
 
 
@@ -49,4 +49,4 @@ sequelize.sync({ force: false }).then(() => {
 
 // //require the models folder because there is an index file in the folder that exports all files within it
 // //             
-// app.use(require('./models'));
+app.use(require('./controllers'));
