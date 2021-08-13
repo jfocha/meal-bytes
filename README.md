@@ -2,11 +2,13 @@
 
 Dependencies
 
-Mysql <br />
-mysql2 <br />
-nodemon <br />
-handlebars-express <br />
-express <br />
-sequelize <br />
-handlebars <br />
-dotenv <br />
+   axios </br>
+   bcrypt
+    connect-session-sequelize
+    dotenv
+    express
+    express-handlebars
+    express-session
+    mysql2
+    nodemon
+    sequelize
