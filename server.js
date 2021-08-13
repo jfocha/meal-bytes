@@ -49,4 +49,4 @@ sequelize.sync({ force: false }).then(() => {
 
 // //require the models folder because there is an index file in the folder that exports all files within it
 // //             
-// app.use(require('./models'));
+app.use(require('./controllers'));
