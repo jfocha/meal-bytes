@@ -3,12 +3,12 @@
 Dependencies
 
    axios </br>
-   bcrypt
-    connect-session-sequelize
-    dotenv
-    express
-    express-handlebars
-    express-session
-    mysql2
-    nodemon
-    sequelize
+   bcrypt </br>
+    connect-session-sequelize </br>
+    dotenv </br>
+    express </br>
+    express-handlebars </br>
+    express-sessionv </br>
+    mysql2 </br>
+    nodemon </br>
+    sequelize </br>
