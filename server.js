@@ -44,9 +44,6 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
 });
 
+// Stop changing this file LOL!
+// If you can't reach a route, go to the 'controllers' folder and fix the route!!!!
 
-// require('../../models'); belongs in the api routes
-
-// //require the models folder because there is an index file in the folder that exports all files within it
-// //             
-app.use(require('./controllers'));
