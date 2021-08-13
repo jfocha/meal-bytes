@@ -21,13 +21,3 @@ favorite.init(
 );
 
 module.exports = favorite;
-
-
-	// Associations
-	favorite.associate = function(db) {
-		this.belongsTo(db.recipe);
-		this.belongsTo(db.user);
-	};
-
-	return favorite;
-
