@@ -9,13 +9,17 @@ Recipe.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    ingredients: {
-
-      type: DataTypes.STRING,
-    },
     instructions: {
-
       type: DataTypes.TEXT,
+      allowNull: false
+    },
+    ingredients_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'ingredients',
+        key: 'id'
+      }
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -29,7 +33,7 @@ Recipe.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'recipes',
+    modelName: 'recipe',
   }
 );
 module.exports = Recipe;

@@ -1,27 +1,33 @@
 //Should create tables of the database in the workbench
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-class Ingredients extends Model { }
-Ingredients.init(
+class Ingredient extends Model { }
+Ingredient.init(
     {
-        ingredients_id: {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        ingredients: {
-
+        ingredient: {
             type: DataTypes.STRING,
+            allowNull: false
         },
-
+        recipe_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'recipe',
+                key: 'id'
+            }
+        }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Ingredients',
+        modelName: 'ingredient',
     }
 );
-module.exports = Ingredients;
+module.exports = Ingredient;
 
 // Need to write an Instructions.js and use a many to many relationship with ingredients to form the Recipe.js model. Don't forget to make the relationship in index.js in the model folder
