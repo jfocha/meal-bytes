@@ -19,31 +19,43 @@ Recipe.belongsTo(User, {
     
     
 //   });
-Instruction.belongsTo(Ingredient, {
-    // through: Recipe,
-    foreignKey: 'ingredient_id',
+// Instruction.belongsTo(Ingredient, {
+//     // through: Recipe,
+//     foreignKey: 'ingredient_id',
     
     
-  });
-
-Recipe.hasOne(Instruction, {
-    foreignKey: 'instruction_id',
-    
-  });
-  
-Recipe.hasMany(Ingredient, {
-    foreignKey: 'ingredient_id',
-    
-  });
-
-
-
-
-// Recipe.hasMany(Ingredient, {
-//     // through: 
-//     foreignKey: 'recipe_id',
-//     // target: 'id'
 //   });
+
+// Recipe.hasOne(Instruction, {
+//     foreignKey: 'instruction_id',
+    
+//   });
+  
+//   Instruction.hasMany(Ingredient, {
+//     foreignKey: 'ingredient_id',
+    
+//   });
+
+
+
+
+Ingredient.hasMany(Recipe, {
+    // through: "Recipe_Ingredient",
+    // as: "Ingredient",
+    // foreignKey: 'recipe_id',
+    // constraints: false
+    // target: 'id'
+  });
+
+  Ingredient.belongsToMany(Recipe, {
+    // constraints: false,
+    through: "Recipe_Ingredient",
+    // as: "Recipe",
+    
+    foreignKey: 'ingredient_id',
+    constraints: false
+    // target: 'id'
+  });
   
 // Recipe.belongsToMany(Ingredient, {
 //     foreignKey: 'ingredient_id',

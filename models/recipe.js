@@ -9,15 +9,19 @@ Recipe.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     instructions: {
       type: DataTypes.TEXT,
       allowNull: false
     },
     ingredients_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
-        model: 'ingredients',
+        model: 'ingredient',
         key: 'id'
       }
     },

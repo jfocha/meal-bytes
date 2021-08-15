@@ -4,10 +4,18 @@ CREATE DATABASE mealbytes_db;
 
 USE mealbytes_db;
 
-INSERT INTO recipe (amount, ingredients, instructions)
+INSERT INTO ingredient (ingredient)
 VALUES 
-(0.5, "cilantro", "Cilantro Pistachio Pesto Shrimp Pasta", 
-"Make the pesto by adding the following to the bowl of a food processor: cilantro, pistachios, jalapeño, garlic cloves, lime juice, olive oil, water and salt and pepper. Process until smooth, scraping down the sides and processing again, if necessary.
+("cilantro"),
+("Pistachio"),
+("Pesto"),
+("Shrimp"),
+("Pasta");
+
+
+INSERT INTO recipe (instructions, ingredients_id)
+VALUES 
+("Make the pesto by adding the following to the bowl of a food processor: cilantro, pistachios, jalapeño, garlic cloves, lime juice, olive oil, water and salt and pepper. Process until smooth, scraping down the sides and processing again, if necessary.
 Next cook the shrimp: add olive oil to a large skillet or pan and place over medium high heat. Add in shrimp, garlic powder and salt and pepper; cook until shrimp is no longer pink. Remove from heat and set aside.
 Cook the pasta until al dente, according to the directions on the package. Drain pasta, then add back to pot. Stir in the pesto and shrimp until well coated. Add pasta to bowls and garnish with goat cheese, a few 
 cilantro leaves and a sprinkle of crushed pistachios. Serve immediately. Makes about 4 servings."),

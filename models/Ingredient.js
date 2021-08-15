@@ -12,14 +12,17 @@ Ingredient.init(
         ingredient: {
             type: DataTypes.STRING,
             allowNull: false
+            // needs to be unique. test?
         },
-        recipe_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'recipe',
-                key: 'id'
-            }
-        }
+        // recipe_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'recipe',
+        //         key: 'id'
+        //     },
+        //     constraints: false
+        // },
+        
     },
     {
         sequelize,
