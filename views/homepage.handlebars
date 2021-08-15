@@ -1,4 +1,26 @@
 
 <div>You are on the homepage</div>
 
-{{log recipe}}
+{{log recipes.recipe}}
+
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://acceleratechange.org/wp-content/uploads/2019/09/ACF-logo-placeholder.png" class="d-block w-100" alt="picture of food">
+    </div>
+    {{#each recipe as |recipes|}}
+        <div class="carousel-item">
+      <img src="{{recipes.recipe.image}}" class="d-block w-100" alt="picture of food">
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+
+  {{!-- {{#each recipe as |recipes|}}
+  <li>
+      {{log recipes.recipe}}
+    {{ recipes.recipe.label }}
+  </li>
+  {{/each}} --}}
