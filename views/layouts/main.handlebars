@@ -3,39 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
     <title>Meal Bytes</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
 
   <body>
     <div class="wrapper">
-      
+
       {{!-- {{log loggedIn}} --}}
       <header>
-        <h1>
-          <a href="/">Meal Bytes</a>
-        </h1>
-        <nav>
-          {{#if loggedIn}}
-          <a href="/dashboard">dashboard</a>
-            <button id="logout" class="btn-no-style">Logout</button>
-          {{else}}
-            <form class="login-form">
-              <div>
-                <label for="email-login">email:</label>
-                <input type="text" id="email-login" />
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">Meal Bytes</a>
+            {{#if loggedIn}}
+              <div class="d-flex">
+                <a class="nav-link" href="/dashboard">dashboard</a>
+                <a id="logout" class="nav-link" href="/login">logout</a>
               </div>
-              <div>
-                <label for="password-login">password:</label>
-                <input type="password" id="password-login" />
-              </div>
-              <div>
-                <button type="submit">Login!</button>
-              </div>
-              <a class="link" href="/signup">Sign up instead</a>
-            </form>
-          {{/if}}
+            {{else}}
+              <form class="login-form d-flex">
+                <div>
+                  <label for="email-login">email:</label>
+                  <input type="text" id="email-login" />
+                </div>
+                <div>
+                  <label for="password-login">password:</label>
+                  <input type="password" id="password-login" />
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    class="btn btn-sm btn-outline-secondary"
+                  >Login!</button>
+                </div>
+                <a class="nav-link" href="/signup">Sign up instead</a>
+              </form>
+            {{/if}}
+          </div>
         </nav>
       </header>
       <main>
@@ -51,7 +61,11 @@
     {{else}}
       <script src="/javascript/login.js"></script>
     {{/if}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
   </body>
 
 </html>
