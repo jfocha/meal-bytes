@@ -3,6 +3,9 @@ const User = require('./User');
 const favorite = require('./favorite');
 const Ingredient = require('./Ingredient');
 const Instruction = require('./Instruction');
+const Post = require("./Post");
+const Vote = require('./Vote');
+const Comment = require('./Comment');
 
 //need to create associations and register foreign keys
 User.hasMany(Recipe, {
@@ -74,7 +77,59 @@ Ingredient.hasMany(Recipe, {
 //     foreignKey: "Recipe_id",
 // });
 
-module.exports = { User, Recipe, favorite, Ingredient };
+User.hasMany(Post, {
+  foreignKey: 'user_id'
+});
+
+Post.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+User.belongsToMany(Post, {
+  through: Vote,
+  as: 'voted_posts',
+  foreignKey: 'user_id'
+});
+
+Post.belongsToMany(User, {
+  through: Vote,
+  as: 'voted_posts',
+  foreignKey: 'post_id'
+});
+
+Vote.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+Vote.belongsTo(Post, {
+  foreignKey: 'post_id'
+});
+
+User.hasMany(Vote, {
+  foreignKey: 'user_id'
+});
+
+Post.hasMany(Vote, {
+  foreignKey: 'post_id'
+});
+
+Comment.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+Comment.belongsTo(Post, {
+  foreignKey: 'post_id'
+});
+
+User.hasMany(Comment, {
+  foreignKey: 'user_id'
+});
+
+Post.hasMany(Comment, {
+  foreignKey: 'post_id'
+});
+
+module.exports = { User, Recipe, favorite, Ingredient, Post, Vote, Comment };
 
 //index.js file will export any models found within the models folder so that 
 //they can be referenced from other files by just calling on the models folders

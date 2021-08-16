@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
+const axios = require('axios');
 
 router.get('/', withAuth, (req, res) => {
     Post.findAll({
@@ -32,10 +33,23 @@ router.get('/', withAuth, (req, res) => {
         ]
     })
         .then(dbPostData => {
+
+            const api_key = process.env.API_KEY;
+            const app_id = process.env.APP_ID;
+            const recipe_url = `https://api.edamam.com/api/recipes/v2/recipe_10abfbc20e802c832453500bcc50e1bd?type=public&app_id=${app_id}&app_key=${api_key}`;
+            
+            console.log(recipe_url);
+      
+            // const res = 
+            axios.get(recipe_url).then(recipeData => {
+              const recipe = recipeData.data.hits;
+              
+
             // serialize data before passing to template
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('dashboard', { posts, loggedIn: true });
+            res.render('dashboard', { posts, recipe, loggedIn: true });
         })
+    })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
