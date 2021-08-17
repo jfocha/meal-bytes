@@ -6,7 +6,7 @@ require('dotenv').config()
 
 // hard coded test route
 router.get('/', (req, res) => {
-  console.log(req.session);
+  // console.log(req.session);
   User.findAll({
     attributes: ['username']
   })
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
       const app_id = process.env.APP_ID;
       // const recipe_url = `https://api.edamam.com/${api_key}/recipes/v2`;
       const recipe_url = `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${app_id}&app_key=${api_key}`;
-      console.log(recipe_url);
+      // console.log(recipe_url);
 
       // const res = 
       axios.get(recipe_url).then(recipeData => {
