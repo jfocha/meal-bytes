@@ -21,7 +21,7 @@ async function recipeSearchFormHandler(event) {
 
         if (response.ok) {
             console.log('found recipe!');
-            document.location.replace('/dashboard');
+            document.location.replace('/searched');
           } else {
             alert(response.statusText);
           }

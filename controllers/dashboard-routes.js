@@ -46,7 +46,7 @@ router.get('/', withAuth, (req, res) => {
       
             // // // const res = 
             // axios.get(recipe_url).then(recipeData => {
-            // //   const recipe = recipeData.data.hits;
+            //   // const recipe = recipeData.data.hits;
               
 
             // serialize data before passing to template
@@ -128,6 +128,14 @@ router.get('/edit/:id', withAuth, (req, res) => {
         });
     });
 
+    router.get('/', (req, res) => {
+      // if (req.session.loggedIn) {
+      //   res.redirect('/');
+      //   return;
+      // }
+      
+  res.render('searched');
+});
     router.post('/', withAuth, (req, res) => {
       Post.findAll({
         where: {
@@ -170,7 +178,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
             // pass a single post object into the homepage template
     
-            res.render('dashboard', {
+            res.render('searched', {
               recipe,
               posts,
               loggedIn: req.session.loggedIn

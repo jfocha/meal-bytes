@@ -1,9 +1,12 @@
 
 {{!-- find a way to make a recipe a fav in the db. Then display fav recipes here --}}
-{{> recipe-info}}
+{{!-- {{> recipe-info}} --}}
 
 <section>
     
+  {{> recipe-info}}
+
+  
   <h2>Create New Post</h2>
 
   <form class="new-post-form">
@@ -17,21 +20,21 @@
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
-
 </section>
 
- {{log recipe}}
+
+ <p>{{recipe.recipe.label}}</p>
  {{!-- {{#if recipe}} --}}
-    {{#each recipe as |recipes|}}
-
+   {{#each recipe}}
+     {{log 'hello'}}
+    <p>hello world</p>
     {{!-- {{log recipes.recipe.image}} --}}
-    <div>
-    {{log recipes.recipe.label}}
-title
+    {{!-- <div> --}}
+    {{!-- {{log recipe.recipe.image}} --}}
 
-    {{recipes.recipe.label}}
-      <img src="{{recipes.recipe.image}}" alt="picture of food">
-    </div>
+    
+      {{!-- <img src="{{recipe.recipe.image}}" alt="picture of food"> --}}
+    {{!-- </div> --}}
     {{/each}}
     {{!-- {{/if}} --}}
 {{!-- {{#if posts.length}}
@@ -47,6 +50,7 @@ title
   </ol>
 </section>
 {{/if}} --}}
+
 
 <script src="/javascript/add-post.js"></script>
 <script src="/javascript/recipes.js"></script>
