@@ -44,6 +44,5 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
 });
 
-// Stop changing this file LOL!
 // If you can't reach a route, go to the 'controllers' folder and fix the route!!!!
 
