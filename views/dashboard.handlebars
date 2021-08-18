@@ -19,7 +19,19 @@
   </form>
 </section>
 
-{{#if posts.length}}
+ {{!-- {{log recipe}} --}}
+ {{!-- {{#if recipe}} --}}
+    {{#each recipe as |recipes|}}
+    {{!-- {{log recipes.recipe.image}} --}}
+    <div>
+    {{log recipes.recipe.label}}
+title
+    {{recipes.recipe.label}}
+      <img src="{{recipes.recipe.image}}" alt="picture of food">
+    </div>
+    {{/each}}
+    {{!-- {{/if}} --}}
+{{!-- {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
   <ol>
@@ -31,6 +43,7 @@
     {{/each}}
   </ol>
 </section>
-{{/if}}
+{{/if}} --}}
 
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/recipes.js"></script>

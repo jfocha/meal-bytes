@@ -28,7 +28,7 @@ async function recipeSearchFormHandler(event) {
     }
 }
 
-document.querySelector('.form-control').addEventListener('submit', recipeSearchFormHandler);
+document.querySelector('.recipe-submit').addEventListener('submit', recipeSearchFormHandler);
 
     // getSingleRecipe(recipeByIdUrl);
 
