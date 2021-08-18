@@ -41,4 +41,4 @@ Recipe.init(
   }
 );
 module.exports = Recipe;
-// need to be a model formed from Ingredients and Instructions
+//need to be a model formed from Ingredients and Instructions
