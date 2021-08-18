@@ -34,7 +34,7 @@ dotenv <br />
   
   ## Installation
   
-  Go to the live website at ENTER LIVE WEBSITE FROM HEROKU HERE
+  Go to the live website at (https://pure-wildwood-98439.herokuapp.com/)
   
   
   ## Usage 
