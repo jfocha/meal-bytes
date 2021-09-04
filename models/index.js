@@ -16,6 +16,9 @@ Recipe.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
+// Recipe.hasMany(Ingredient, {
+
+// });
 // Ingredient.belongsToMany(Instruction, {
 //     through: Recipe,
 //     foreignKey: 'instruction_id',
@@ -41,14 +44,26 @@ Recipe.belongsTo(User, {
 
 
 
+//-------------------------
+//recipe table 
+//id
+// intermediate table
 
-Ingredient.hasMany(Recipe, {
-    // through: "Recipe_Ingredient",
-    // as: "Ingredient",
-    // foreignKey: 'recipe_id',
-    // constraints: false
-    // target: 'id'
-  });
+//ingredients table
+//id
+// intermediate table
+
+// make three simple recipes. add the ingredients. make the html dynamic.
+
+//-------------------------
+
+// Ingredient.hasMany(Recipe, {
+//     // through: "Recipe_Ingredient",
+//     // as: "Ingredient",
+//     // foreignKey: 'recipe_id',
+//     // constraints: false
+//     // target: 'id'
+//   });
 
   Ingredient.belongsToMany(Recipe, {
     // constraints: false,

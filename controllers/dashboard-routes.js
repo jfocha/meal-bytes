@@ -134,7 +134,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
       //   return;
       // }
       
-  res.render('searched');
+  res.render('dashboard');
 });
     router.post('/', withAuth, (req, res) => {
       Post.findAll({
@@ -173,16 +173,24 @@ router.get('/edit/:id', withAuth, (req, res) => {
           console.log(recipeByIngredientUrl);
 
           axios.get(recipeByIngredientUrl).then(recipeData => {
-            const recipe = recipeData.data.hits;
+            const recipeStuff = recipeData.data.hits;
             // console.log(recipe);
+            if (recipeStuff){
+            const recipe = recipeStuff;
+            console.log("-------Start Recipe----------")
+              console.log(recipe)
+              console.log("-------End Recipe----------")
             const posts = dbPostData.map(post => post.get({ plain: true }));
             // pass a single post object into the homepage template
-    
-            res.render('searched', {
-              recipe,
-              posts,
-              loggedIn: req.session.loggedIn
-            });
+              // const test = {test1: "test"};
+              // console.log("route " + test);
+              res.json(recipe);
+            // res.render('dashboard', {
+            //   recipe,
+            //   posts,
+            //   loggedIn: req.session.loggedIn
+            // });
+          }
           })
         })
         .catch(err => {

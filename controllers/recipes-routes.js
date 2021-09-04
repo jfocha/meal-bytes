@@ -3,7 +3,7 @@ const axios = require('axios');
 // be sure to add "API_KEY = 5ba6255aa5cc37d9defcd3858ff211fe—" "APP_ID = f4cb9a24" in your .env
 const router = require('express').Router();
 const { Recipe, Ingredient } = require("../models");
-// const sequelize = require('../../config/connection');
+const sequelize = require('../config/connection');
 
 // api/recipe/display
 router.get('/display', async (request, response) => {
@@ -55,69 +55,71 @@ router.get('/display', async (request, response) => {
 //         });
 // });
 
-// // POST /api/recipes/ingredients
-// router.post('/ingredients', (req, res) => {
-//     // for each ingredient entered. or checked?
+// POST /api/recipes/ingredients
+router.post('/ingredients', (req, res) => {
+    // for each ingredient entered. or checked?
 
     
-//             Ingredient.create({
-//                 ingredient: req.body.ingredient,
-//                 // recipe_id: dbInstructionsData.id,
-//                 // use the id from the session
-//                 // user_id: req.session.user_id
-//             })
-//         .then(dbIngredientData => res.json(dbIngredientData))
-//         .catch(err => {
-//             console.log(err);
-//             res.status(400).json(err);
-//         });
-// });
+            Ingredient.create({
+                ingredient: req.body.ingredient,
+                // recipe_id: dbInstructionsData.id,
+                // use the id from the session
+                // user_id: req.session.user_id
+            })
+        .then(dbIngredientData => res.json(dbIngredientData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+});
 
-// // POST /api/recipes/instructions
-// router.post('/instructions', (req, res) => {
-//     // https://stackoverflow.com/questions/40866083/is-there-a-way-to-save-multiple-embedded-models-in-db-at-once-using-sequelize
-//     const recipe = {
-//         title: req.body.title,
-//         instructions: req.body.instructions,
-//         Ingredient: [
-//           {
-//             ingredients_id: '1',
-//           },
-//           {
-//             ingredients_id: '2',
-//           },
-//         ],
-//       };
+// use seeds for sequelize to populate the database with ingredients
+
+// POST /api/recipes/instructions
+router.post('/instructions', (req, res) => {
+    // https://stackoverflow.com/questions/40866083/is-there-a-way-to-save-multiple-embedded-models-in-db-at-once-using-sequelize
+    const recipe = {
+        title: req.body.title,
+        instructions: req.body.instructions,
+        Ingredient: [
+          {
+            ingredients_id: '1',
+          },
+          {
+            ingredients_id: '2',
+          },
+        ],
+      };
       
-//     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-//     sequelize.transaction(t => 
-//         Recipe.create(recipe, {
+    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+    sequelize.transaction(t => 
+        Recipe.create(recipe, {
             
         
-//           include: [{
-//             model: Ingredient,
-//             as: 'Ingredient',
-//           }],
-//           transaction: t,
-//         })
-//       )
-//       .catch(e => console.log('the txn failed because', e))
+          include: [{
+            model: Ingredient,
+            as: 'Ingredient',
+          }],
+          transaction: t,
+        })
+      )
+    //   .catch(e => console.log('the txn failed because', e))
     
-//     // Recipe.create({
-//     //     instructions: req.body.instructions,
-//     //     title: req.body.title
-//     //     // ingredients_id: dbIngredientData.id,
-//     //     // use the id from the session
-//     //     // user_id: req.session.user_id
-//     // })
-//         .then(dbInstructionsData =>
-//             res.json(dbInstructionsData)
-//             )
-//         .then(dbRecipeData => res.json(dbRecipeData))
-//         .catch(err => {
-//             console.log(err);
-//             res.status(400).json(err);
-//         });
-// });
+    // Recipe.create({
+    //     instructions: req.body.instructions,
+    //     title: req.body.title
+    //     // ingredients_id: dbIngredientData.id,
+    //     // use the id from the session
+    //     // user_id: req.session.user_id
+    // })
+        .then(dbInstructionsData =>
+            res.json(dbInstructionsData)
+            )
+        .then(dbRecipeData => res.json(dbRecipeData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+});
 
 module.exports = router;

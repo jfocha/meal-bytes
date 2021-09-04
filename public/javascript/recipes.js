@@ -20,8 +20,11 @@ async function recipeSearchFormHandler(event) {
         });
 
         if (response.ok) {
+            console.log(response); 
             console.log('found recipe!');
-            document.location.replace('/searched');
+            // write a function to render the data on the page, don't redirect
+            // put the api call into a database
+            // document.location.replace('/dashboard');
           } else {
             alert(response.statusText);
           }

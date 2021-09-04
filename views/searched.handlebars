@@ -23,19 +23,32 @@
 </section>
 
 
- <p>{{recipe.recipe.label}}</p>
+
  {{!-- {{#if recipe}} --}}
+ <div>{{1}}</div>
+ {{!-- {{log test}} --}}
+
    {{#each recipe}}
      {{log 'hello'}}
     <p>hello world</p>
+     <p>{{this.recipe.label}}</p>
     {{!-- {{log recipes.recipe.image}} --}}
     {{!-- <div> --}}
     {{!-- {{log recipe.recipe.image}} --}}
+    {{!-- {{log this}} --}}
+    {{!-- {{log this.recipe.label}} --}}
 
     
-      {{!-- <img src="{{recipe.recipe.image}}" alt="picture of food"> --}}
+      <img src="{{this.recipe.image}}" alt="picture of food">
     {{!-- </div> --}}
+
     {{/each}}
+
+    <ul class="recipe_list">
+  {{#each recipe}}
+    <li>{{this}}</li>
+  {{/each}}
+</ul>
     {{!-- {{/if}} --}}
 {{!-- {{#if posts.length}}
 <section>

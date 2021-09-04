@@ -19,11 +19,14 @@
   </form>
 
 </section>
-
- {{log recipe}}
+<div>hello1</div>
+ {{!-- {{log recipe}} --}}
  {{!-- {{#if recipe}} --}}
-    {{#each recipe as |recipes|}}
+ {{recipe}}
+ {{log recipe.recipe.label}}
 
+    {{#each recipe as |recipes|}}
+<div>hello2</div>
     {{!-- {{log recipes.recipe.image}} --}}
     <div>
     {{log recipes.recipe.label}}
@@ -49,4 +52,4 @@ title
 {{/if}} --}}
 
 <script src="/javascript/add-post.js"></script>
-<script src="/javascript/recipes.js"></script>
+{{!-- <script src="/javascript/recipes.js"></script> --}}
