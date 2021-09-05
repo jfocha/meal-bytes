@@ -1,33 +1,54 @@
 
 {{!-- find a way to make a recipe a fav in the db. Then display fav recipes here --}}
+{{!-- recipe-info searches for a recipe using the Edamam api  --}}
 {{> recipe-info}}
 
 <section>
     
-  <h2>Create New Post</h2>
+  <h2>Create New Recipe</h2>
 
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
+  <form class="new-recipe-form">
+    <form>
+      <div>
+        <label for="recipe-title">Title</label>
+      </div>
+      <div>
+        <input type="text" id="recipe-title" name="recipe-title" />
+      </div>
     </div>
+    <br>
     <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <div>
+        <label for="recipe-instructions">Instructions</label>
+      </div>
+      <div>
+        <textarea id="recipe-instructions" name="recipe-instructions"></textarea>
+      </div>
     </div>
+    <br>
     <button type="submit" class="btn">Create</button>
   </form>
 
 </section>
-<div>hello1</div>
- {{!-- {{log recipe}} --}}
- {{!-- {{#if recipe}} --}}
- {{recipe}}
+
+ {{log recipes}}
+ {{!-- {{#if recipes}} --}}
+{{#each recipes}}
+<div>
+  {{title}}
+</div>
+<div>
+  {{instructions}}
+</div>
+{{/each}}
+{{!-- {{/if}} --}}
+
+ {{!-- {{recipe}}
  {{log recipe.recipe.label}}
 
     {{#each recipe as |recipes|}}
 <div>hello2</div>
-    {{!-- {{log recipes.recipe.image}} --}}
+    {{log recipes.recipe.image}}
     <div>
     {{log recipes.recipe.label}}
 title
@@ -35,7 +56,9 @@ title
     {{recipes.recipe.label}}
       <img src="{{recipes.recipe.image}}" alt="picture of food">
     </div>
-    {{/each}}
+    {{/each}} --}}
+
+    
     {{!-- {{/if}} --}}
 {{!-- {{#if posts.length}}
 <section>

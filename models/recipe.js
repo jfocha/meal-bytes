@@ -17,14 +17,14 @@ Recipe.init(
       type: DataTypes.TEXT,
       allowNull: false
     },
-    ingredients_id: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      references: {
-        model: 'ingredient',
-        key: 'id'
-      }
-    },
+    // ingredients_id: {
+    //   type: DataTypes.INTEGER,
+    //   // allowNull: false,
+    //   references: {
+    //     model: 'ingredient',
+    //     key: 'id'
+    //   }
+    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -36,6 +36,7 @@ Recipe.init(
   {
     sequelize,
     freezeTableName: true,
+    timestamps: false,
     underscored: true,
     modelName: 'recipe',
   }
