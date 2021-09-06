@@ -4,7 +4,7 @@ const favorite = require('./favorite');
 const Ingredient = require('./Ingredient');
 const Instruction = require('./Instruction');
 const Post = require("./Post");
-const Vote = require('./Vote');
+const Recipe_Ingredient = require('./Recipe_Ingredient');
 const Comment = require('./Comment');
 
 //need to create associations and register foreign keys
@@ -70,15 +70,23 @@ Ingredient.belongsToMany(Recipe, {
   through: "Recipe_Ingredient",
   // as: "Recipe",
 
-  // foreignKey: 'ingredient_id',
+  foreignKey: 'ingredient_id',
   constraints: false
   // target: 'id'
 });
 
 Recipe.belongsToMany(Ingredient, {
   through: "Recipe_Ingredient",
-  // foreignKey: 'ingredient_id',
+  foreignKey: 'recipe_id',
   // target: 'id'
+});
+
+Recipe_Ingredient.belongsTo(Ingredient, {
+  foreignKey: 'ingredient_id'
+});
+
+Recipe_Ingredient.belongsTo(Recipe, {
+  foreignKey: 'recipe_id'
 });
 
 // Ingredient.belongsToMany(Recipe, {

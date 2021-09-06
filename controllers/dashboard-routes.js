@@ -3,9 +3,23 @@ const sequelize = require('../config/connection');
 const { Recipe, Ingredient, User } = require('../models');
 const withAuth = require('../utils/auth');
 const axios = require('axios');
+const Recipe_Ingredient = require('../models/Recipe_Ingredient');
 
 // GET /dashboard
 router.get('/', withAuth, (req, res) => {
+  // Ingredient.findAll({
+  //   attributes: [
+  //     'id',
+  //     'ingredient'
+  //     // get ingredients from through table here
+  //     // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+  // ],
+  // })
+  // .then(dbPostData => {
+  //   const ingredients = dbPostData.map(ingredient => ingredient.get({ plain: true }));
+  //           res.render('dashboard', { ingredients, loggedIn: true });
+  //       })
+
   Recipe.findAll({
         where: {
             // use the ID from the session
@@ -16,14 +30,24 @@ router.get('/', withAuth, (req, res) => {
             'title',
             'instructions'
             // get ingredients from through table here
-            // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            //[sequelize.literal('(SELECT ingredient FROM recipe LEFT JOIN Recipe_Ingredient ON Recipe_Ingredient.recipe_id = recipe.id LEFT JOIN ingredient ON ingredient.id = Recipe_Ingredient.ingredient_id;)'), ]
         ],
         include: [
             {
                 model: User,
                 attributes: ['username']
-            }
-        ]
+            },
+            {
+              model: Ingredient,
+              through: [Recipe_Ingredient],
+              attributes: ['ingredient']
+              // where: {
+              //   recipe_id: 1
+              // }
+          },
+
+        ],
+
     })
         .then(dbPostData => {
 

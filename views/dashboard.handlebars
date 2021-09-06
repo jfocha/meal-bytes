@@ -1,12 +1,25 @@
 
 {{!-- find a way to make a recipe a fav in the db. Then display fav recipes here --}}
 {{!-- recipe-info searches for a recipe using the Edamam api  --}}
-{{> recipe-info}}
+{{!-- {{> recipe-info}} --}}
 
 <section>
     
   <h2>Create New Recipe</h2>
 
+    <form class="new-ingredient-form">
+    <form>
+      <div>
+        <label for="ingredient-name">Ingredient</label>
+      </div>
+      <div>
+        <input type="text" id="ingredient-name" name="ingredient-name" />
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn">Add Ingredient</button>
+  </form>
+<br><br>
   <form class="new-recipe-form">
     <form>
       <div>
@@ -40,6 +53,11 @@
 <div>
   {{instructions}}
 </div>
+{{#each ingredients}}
+{{ingredient}}
+{{log ingredient}}
+{{/each}}
+
 {{/each}}
 {{!-- {{/if}} --}}
 
@@ -74,5 +92,6 @@ title
 </section>
 {{/if}} --}}
 
+<script src="/javascript/add-ingredient.js"></script>
 <script src="/javascript/add-post.js"></script>
-{{!-- <script src="/javascript/recipes.js"></script> --}}
+
